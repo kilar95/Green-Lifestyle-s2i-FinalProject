@@ -27,7 +27,8 @@
   width: 100px;
 }
 
-.descr > h4 {
+.descr > h1 {
+  font-size: min(6vw, 2rem);
   text-align: center;
 }
 
@@ -60,10 +61,33 @@
   .auth-container {
     flex-direction: column;
     max-width: 60vw;
+    height: 80vh;
     padding: 50px;
   }
 
   .infoForm {
     width: max(10rem, 50vw);
+    font-size: 14px;
+  }
+
+  .infoForm > h3 {
+    margin: 0;
+  }
+
+  .logo {
+    width: 80px;
+    padding-right: 0;
+    position: relative;
+    top: 10px;
+  }
+}
+
+@media (max-height: 670px) and (max-width: 768px) {
+  .auth-container {
+    gap: 0;
+  }
+
+  .logo {
+    width: 60px;
   }
 }

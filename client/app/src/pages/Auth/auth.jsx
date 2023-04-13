@@ -49,7 +49,7 @@ const Auth = () => {
                 <div className='authPage-descr'>
                     <img className="logo" src={Logo} alt='logo' />
                     <div className='descr'>
-                        <h1 style={{ fontSize: '30px' }}>How green is your lifestyle?</h1>
+                        <h1>How green is your lifestyle?</h1>
                         <h5>Discover how much your daily habits impact the environment.</h5>
                     </div>
                 </div>
