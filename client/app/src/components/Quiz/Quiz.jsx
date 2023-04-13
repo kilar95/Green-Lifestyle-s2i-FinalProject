@@ -4,16 +4,19 @@ import QuizButton from './QuizButton'
 import back from '../../assets/imgs/back.png'
 import quizData from '../../quizData'
 import { useDispatch, useSelector } from 'react-redux'
-import { calculateResults } from '../../api/userAPI'
+import { calculateResults } from '../../actions/userAction'
+import Suggestions from '../Suggestions'
 
-const Quiz = () => {
+const Quiz = ({ setQuizStart, setShowSuggestions }) => {
     const dispatch = useDispatch()
-    const { user } = useSelector(state => state.userReducer.authData)
+    const user = useSelector(state => state.userReducer.user)
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [readyToSubmit, setReadyToSubmit] = useState(false)
 
     const handleSubmit = async () => {
         dispatch(calculateResults(user._id))
+        setQuizStart(false)
+        setShowSuggestions(true)
     }
 
     const handleGoBack = () => {
@@ -29,7 +32,7 @@ const Quiz = () => {
                     <div className='quiz'>
                         {
                             currentQuestion >= 1 &&
-                            <button className='main-button back-button' onClick={handleGoBack}><img src={back} alt='back' /></button>
+                            <button className='main-button round-button' onClick={handleGoBack}><img src={back} alt='back' /></button>
                         }
                         <div className='topic'>
                             <h2>{quizData[currentQuestion].topic}</h2>
@@ -38,28 +41,24 @@ const Quiz = () => {
 
                         <div className='quiz-grid'>
                             {
-                                quizData[currentQuestion].options.map(option =>
-                                    <QuizButton
+                                quizData[currentQuestion].options.map(option => {
+                                    return (<QuizButton
                                         key={option.id}
                                         label={option.text}
                                         icon={option.icon}
                                         currentQuestion={currentQuestion}
                                         setCurrentQuestion={setCurrentQuestion}
-                                        handleSubmit={handleSubmit}
                                         topic={quizData[currentQuestion].topic}
+                                        handleSubmit={handleSubmit}
                                     />
+                                    )
+                                }
                                 )
                             }
                         </div>
-                        {/* {
-                            (currentQuestion === 7 && readyToSubmit) &&
-                            <button className='main-button submit-button' type='submit' onSubmit={handleSubmit}>Submit</button>
-                        } */}
                     </div>
                     :
-                    <div className='results'>
-                        {user.result}
-                    </div>
+                    <Suggestions />
             }
 
         </div>

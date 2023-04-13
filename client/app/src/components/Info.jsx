@@ -1,8 +1,21 @@
 import React from 'react'
 import saveThePlanet from '../assets/imgs/save-the-planet.png'
 import greenPlant from '../assets/imgs/green-tea.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { resetResults } from '../actions/userAction'
 
 const Info = ({ setQuizStart }) => {
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.userReducer.user)
+
+
+    const handleClick = () => {
+        if (user.result) {
+            dispatch(resetResults(user._id))
+        }
+        setQuizStart(true)
+    }
+
     return (
         <div className="main-container">
             <div>
@@ -29,7 +42,12 @@ const Info = ({ setQuizStart }) => {
                 Adopting a green lifestyle can have a positive impact on both the individual and the planet, helping to reduce greenhouse
                 gas emissions and preserve natural resources for future generations.
             </div>
-            <button className="main-button" onClick={() => setQuizStart(true)}>Take the quiz</button>
+            <button className="main-button" onClick={handleClick}>
+                {user.result ?
+                    "Take new quiz" :
+                    "Take the quiz"
+                }
+            </button>
         </div>
     )
 }

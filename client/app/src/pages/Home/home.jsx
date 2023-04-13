@@ -1,15 +1,33 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import logo from '../../assets/imgs/planet-earth.png'
 import Info from "../../components/Info";
 import Quiz from '../../components/Quiz/Quiz'
+import Suggestions from '../../components/Suggestions'
+import Score from '../../components/Score'
+import homepage from '../../assets/imgs/homepage.png'
+import logout from '../../assets/imgs/logout.png'
 import './home.css'
+import { logOut } from "../../actions/authAction";
 
 function Home() {
-    const { user } = useSelector(state => state.userReducer.authData)
-    const state = useSelector(state => state)
-    console.log(state);
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.userReducer.user)
     const [quizStart, setQuizStart] = useState(false)
+    const [showSuggestions, setShowSuggestions] = useState(false)
+
+    const handleHomePage = () => {
+        if (quizStart) {
+            setQuizStart(false)
+            setShowSuggestions(false)
+        } else if (showSuggestions) {
+            setShowSuggestions(false)
+        }
+    }
+
+    const handleLogout = () => {
+        dispatch(logOut())
+    }
 
 
     return (
@@ -17,32 +35,32 @@ function Home() {
             <header>
                 <div>
                     <img className="logo" src={logo} alt='logo'></img>
-                    <h1>Welcome <br></br> {user.username}!</h1>
+                    {
+                        quizStart ?
+                            <h1>Quiz Time!</h1>
+                            :
+                            <h1>Welcome <br></br> {user.username}!</h1>
+                    }
+                    <div style={{ display: "flex", flexDirection: "column", gap: ".5rem", marginLeft: "1rem" }}>
+                        <button className="main-button round-button" style={{ position: "static", margin: "0" }} onClick={handleHomePage}><img src={homepage} alt="homepage" /></button>
+                        <button className="main-button round-button" style={{ position: "static", margin: "0" }} onClick={handleLogout}><img src={logout} alt="logout" /></button>
+                    </div>
                 </div>
             </header>
             <div className="containers">
-                <div className="score-container">
-                    {
-                        user.result &&
-                        <div>
-                            <h1>Current score: <span style={{ color: `${user.result > 30 ? 'red' : 'green'}` }}> {user.result}</span></h1>
-                        </div>
-                    }
-                    {
-                        !user.result &&
-                        <div>
-                            <h3 style={{ paddingInline: "20px", textTransform: "uppercase" }}>Take the quiz to discover your lifestyle score!</h3>
-                        </div>
-                    }
-
-                </div>
+                <Score showSuggestions={showSuggestions} setShowSuggestions={setShowSuggestions} />
                 {
                     quizStart ?
-                        <Quiz />
+                        <Quiz setQuizStart={setQuizStart} setShowSuggestions={setShowSuggestions} />
                         :
-                        <Info setQuizStart={setQuizStart} />
-                }
+                        showSuggestions ?
+                            <div className='quiz-main-container'>
+                                <Suggestions setShowSuggestions={setShowSuggestions} />
+                            </div>
 
+                            :
+                            <Info setQuizStart={setQuizStart} />
+                }
             </div>
         </div>
     );

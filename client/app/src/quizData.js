@@ -58,7 +58,7 @@ const questions = [
         ]
     },
     {
-        topic: "Flights",
+        topic: "Flights Per Year",
         question: "How many flights do you take per year?",
         options: [
             { id: 1, text: 'None', icon: noneIcon },
@@ -75,7 +75,7 @@ const questions = [
         ]
     },
     {
-        topic: "Water",
+        topic: "Water Saving",
         question: "Do you actively try to save water?",
         options: [
             { id: 1, text: 'Yes', icon: yesIcon },

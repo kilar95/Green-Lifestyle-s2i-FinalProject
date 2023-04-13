@@ -1,5 +1,5 @@
 const userReducer = (
-    state = { authData: null, loading: false, error: false, updateLoading: false },
+    state = { token: null, user: null, loading: false, error: false, updateLoading: false },
     action
 ) => {
     switch (action.type) {
@@ -7,16 +7,16 @@ const userReducer = (
             return { ...state, loading: true, error: false };
         case "AUTH_SUCCESS":
             localStorage.setItem("profile", JSON.stringify({ ...action?.data }))
-            return { ...state, authData: action.data, loading: false, error: false };
+            return { ...state, token: action.data.token, user: action.data.user, loading: false, error: false };
         case "AUTH_FAIL":
             return { ...state, loading: false, error: true };
+
 
         case "UPDATE_START":
             return { ...state, updateLoading: true, error: false }
         case "UPDATE_SUCCESS":
             localStorage.setItem("profile", JSON.stringify({ ...action?.data }))
-            console.log(action.data);
-            return { ...state, authData: action.data, updateLoading: false, error: false }
+            return { ...state, user: action.data, updateLoading: false, error: false }
         case "UPDATE_FAIL":
             return { ...state, updateLoading: false, error: true }
 
@@ -25,13 +25,23 @@ const userReducer = (
             return { ...state, updateLoading: true, error: false }
         case "CALCULATION_SUCCESS":
             localStorage.setItem("profile", JSON.stringify({ ...action?.data }))
-            return { ...state, authData: action.data, updateLoading: false, error: false }
+            return { ...state, user: action.data, updateLoading: false, error: false }
         case "CALCULATION_FAIL":
             return { ...state, updateLoading: false, error: true }
 
+
+        case "RESET_START":
+            return { ...state, updateLoading: true, error: false }
+        case "RESET_SUCCESS":
+            localStorage.setItem("profile", JSON.stringify({ ...action?.data }))
+            return { ...state, user: action.data, updateLoading: false, error: false }
+        case "RESET_FAIL":
+            return { ...state, updateLoading: false, error: true }
+
+
         case "LOG_OUT":
             localStorage.clear();
-            return { ...state, authData: null, loading: false, error: false }
+            return { ...state, user: null, token: null, loading: false, error: false }
         default:
             return state
     }

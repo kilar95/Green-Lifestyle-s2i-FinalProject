@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import './App.css'
 
 function App() {
-  const user = useSelector(state => state.userReducer.authData);
+  const user = useSelector(state => state.userReducer.user);
 
   return (
     <div className="App">

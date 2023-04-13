@@ -4,14 +4,26 @@ import '../../assets/imgs/car.png'
 
 const QuizButton = ({ label, icon, currentQuestion, setCurrentQuestion, handleSubmit, topic }) => {
     const dispatch = useDispatch()
-    const { user } = useSelector(state => state.userReducer.authData)
+    const user = useSelector(state => state.userReducer.user)
 
 
     const handleClick = () => {
-        const property = topic.toLowerCase()
-        const value = label.toLowerCase()
-        console.log(user._id, property, value);
+        console.log('domanda numero ' + currentQuestion);
+        let property = topic.toLowerCase()
+        let value = label.toLowerCase()
+        if (property.includes(' ')) {
+            property = property.replace(/\s+\w/g, (match) =>
+                match.toUpperCase().replace(/\s+/g, '')
+            );
+        }
+        if (value.includes(' ')) {
+            value = value.replace(/\s+\w/g, (match) =>
+                match.toUpperCase().replace(/\s+/g, '')
+            )
+        }
         dispatch(updateUserData(user._id, property, value))
+
+
         if (currentQuestion < 7) {
             setCurrentQuestion(prev => prev + 1)
         } else {
@@ -22,7 +34,7 @@ const QuizButton = ({ label, icon, currentQuestion, setCurrentQuestion, handleSu
 
 
     return (
-        <div className="grid-item" onClick={handleClick}>
+        <div className='quiz-button' onClick={handleClick}>
             <img src={icon} alt={label} style={{ width: '60px' }} />
             <span><b>{label}</b></span>
         </div>

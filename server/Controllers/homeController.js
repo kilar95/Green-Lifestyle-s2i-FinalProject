@@ -1,4 +1,5 @@
 const User = require('../Models/userModel')
+const data = require('../data')
 
 const getUserResults = async (req, res) => {
     const { userId } = req.body
@@ -17,7 +18,7 @@ const getUserResults = async (req, res) => {
     }
 }
 
-
+// updating user habits
 const updateUserData = async (req, res) => {
     const { userId, property, value } = req.body
 
@@ -33,6 +34,7 @@ const updateUserData = async (req, res) => {
     }
 }
 
+// calculating final score
 const calculateResults = async (req, res) => {
     const { userId } = req.body
 
@@ -47,15 +49,30 @@ const calculateResults = async (req, res) => {
         let totalScore = 0;
         for (key in user.habits.toObject()) {
             if (key === '_id') continue;
-            console.log(data[key][user.habits[key]].score);
             totalScore += data[key][user.habits[key]].score
         }
 
         user.result = totalScore
         await user.save()
-        res.status(200).json(totalScore)
+        res.status(200).json(user)
     } catch (error) {
         console.log(error);
+        res.status(500).json({ message: error.message })
+    }
+}
+
+
+const resetResults = async (req, res) => {
+    const { userId } = req.params
+
+    try {
+        const userUpdated = await User.findByIdAndUpdate({ _id: userId }, { $unset: { result: "" } }, { returnDocument: 'after' })
+        if (userUpdated) {
+            res.status(200).json(userUpdated)
+        } else {
+            res.status(404).json('User not found')
+        }
+    } catch (error) {
         res.status(500).json({ message: error.message })
     }
 }
@@ -63,5 +80,6 @@ const calculateResults = async (req, res) => {
 module.exports = {
     getUserResults,
     updateUserData,
-    calculateResults
+    calculateResults,
+    resetResults
 }
