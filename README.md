@@ -16,7 +16,7 @@
     <img src="https://user-images.githubusercontent.com/104167965/214048722-6852a762-0ab5-47d9-9497-980075d4f4c9.svg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">RESTful API</h3>
+  <h3 align="center">How Green Is Your Lifestyle?</h3>
 
   <p align="center">
     <br />
