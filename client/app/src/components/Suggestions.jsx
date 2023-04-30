@@ -26,7 +26,8 @@ const Suggestions = ({ setShowSuggestions }) => {
                 Always remember to <b>limit your meat consumption</b> to reduce your carbon emissions.<br></br>
                 Did you know that the best choice in terms of GHG (green house gas emissions) would be to eat a <b>plant based diet</b>?
                 Food production is responsible for one-quarter of the world’s greenhouse gas emissions.
-                You can check the amount of green house gas emissions coming from some of the most common food sources by clicking <a href="https://ourworldindata.org/food-choice-vs-eating-local" target="_blank"> <b>here</b></a>.
+                You can check the amount of green house gas emissions coming from some of the most common food sources by clicking
+                <a href="https://ourworldindata.org/food-choice-vs-eating-local" target="_blank" rel="noreferrer" > <b>here</b></a>.
             </li>
             <br></br>
             <li>
@@ -43,7 +44,7 @@ const Suggestions = ({ setShowSuggestions }) => {
             <li>
                 <b>Save water</b> whenever you can!
                 Using water-saving techniques can save you money and diverts less water from our rivers, bays, and estuaries, which helps keep the environment healthy.
-                Clicking <a href="https://friendsoftheearth.uk/sustainable-living/13-best-ways-save-water" target="_blank"> <b>here</b></a> you can <b>check out</b> some tips to help you conserve water.
+                Clicking <a href="https://friendsoftheearth.uk/sustainable-living/13-best-ways-save-water" target="_blank" rel="noreferrer"> <b>here</b></a> you can <b>check out</b> some tips to help you conserve water.
             </li>
             <br></br>
             <li>
@@ -57,7 +58,8 @@ const Suggestions = ({ setShowSuggestions }) => {
                 it saves energy, it reduces landfill waste, pollution and conserves natural resources!
             </li>
 
-            <p>If you want to learn more about how to reduce your environmental impact visit <a href="https://youth.europa.eu/get-involved/sustainable-development/how-reduce-my-carbon-footprint_en" target="_blank"><b>this link</b></a>.</p>
+            <p>If you want to learn more about how to reduce your environmental impact visit
+                <a href="https://youth.europa.eu/get-involved/sustainable-development/how-reduce-my-carbon-footprint_en" target="_blank" rel="noreferrer" > <b>this link</b></a>.</p>
 
             <button className="main-button" onClick={() => setShowSuggestions(false)}>Back Home</button>
         </div>
