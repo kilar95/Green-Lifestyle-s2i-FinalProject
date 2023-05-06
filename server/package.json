@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "nodemon server.js",
-    "build": "netlify deploy --prod"
+    "build": "npm run build"
   },
   "name": "server",
   "version": "1.0.0",
