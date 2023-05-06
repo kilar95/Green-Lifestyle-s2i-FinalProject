@@ -9,7 +9,18 @@ const authRoute = require('./Routes/authRoute')
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(mongoSanitize())
-app.use(cors({ origin: '*' }))
+
+// allow requests from frontend
+const allowedOrigins = ['https://how-green-is-your-lifestyle.vercel.app'];
+app.use(cors({
+    origin: function (origin, callback) {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+}));
 
 
 // setting routes
