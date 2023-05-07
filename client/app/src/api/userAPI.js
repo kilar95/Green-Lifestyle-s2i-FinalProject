@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 'https://green-lifestyle-s2i-final-project-1hmt.vercel.app/' })
+const API = axios.create({ baseURL: 'https://green-lifestyle-api.vercel.app/' })
 
 export const getUser = (userId) => API.get(`/home`, userId)
 export const updateUserData = (userId, property, value) => API.patch(`/home`, { userId, property, value })

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 'https://green-lifestyle-s2i-final-project-1hmt.vercel.app/' })
+const API = axios.create({ baseURL: 'https://green-lifestyle-api.vercel.app/' })
 
 export const logIn = (formData) => API.post('/auth/login', formData)
 export const signUp = (formData) => API.post('/auth/register', formData)
