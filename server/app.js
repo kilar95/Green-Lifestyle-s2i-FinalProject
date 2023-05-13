@@ -26,6 +26,9 @@ app.use(cors());
 // setting routes
 app.use('/auth', authRoute)
 app.use('/home', homeRoute)
+app.get('/', (req, res) => {
+    res.send('Server is up and running');
+});
 
 app.all('*', (req, res, next) => {
     const error = new Error('Resource not found')
