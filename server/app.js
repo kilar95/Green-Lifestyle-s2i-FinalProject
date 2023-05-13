@@ -21,7 +21,10 @@ app.use(mongoSanitize())
 //         }
 //     }
 // }));
-app.use(cors());
+app.use(cors({
+    origin: true,
+    credentials: true,
+}));
 
 // setting routes
 app.use('/auth', authRoute)
