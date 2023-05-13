@@ -9,7 +9,7 @@ const authRoute = require('./Routes/authRoute')
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(mongoSanitize())
-app.use(cors());
+app.options('*', cors()); // Enable CORS for all routes
 
 // setting routes
 app.use('/auth', authRoute)
@@ -33,5 +33,7 @@ app.use((err, req, res, next) => {
         }
     })
 })
+
+app.timeout = 30000;
 
 module.exports = app
