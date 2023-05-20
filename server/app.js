@@ -9,7 +9,7 @@ const authRoute = require('./Routes/authRoute')
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(mongoSanitize())
-app.options('*', cors()); // Enable CORS for all routes
+app.use(cors()); // Enable CORS for all routes
 
 // setting routes
 app.use('/auth', authRoute)
