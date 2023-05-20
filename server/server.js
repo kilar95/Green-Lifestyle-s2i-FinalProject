@@ -5,7 +5,7 @@ require('dotenv').config()
 const port = process.env.PORT || 3000
 
 // connect to the database
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.ATLAS_URI)
     .then(() => app.listen(port, () => {
         console.log(`Listening to port ${port}`);
     }))
