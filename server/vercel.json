@@ -34,8 +34,5 @@
           "Access-Control-Allow-Headers": "Content-Type, Authorization"
         }
       }
-    ],
-    "functions": {
-      "timeout": 10
-    }
+    ]
   }
