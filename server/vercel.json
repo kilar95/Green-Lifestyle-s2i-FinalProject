@@ -43,6 +43,14 @@
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization"
       }
+    },
+    {
+      "src": "/test-connection",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/test-server",
+      "dest": "/server.js"
     }
   ]
 }
