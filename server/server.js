@@ -4,6 +4,8 @@ require('dotenv').config()
 
 const port = process.env.PORT || 3000
 
+console.log("in server.js");
+
 // connect to the database
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => app.listen(port, () => {
