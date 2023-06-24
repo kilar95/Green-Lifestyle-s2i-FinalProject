@@ -4,7 +4,9 @@ require('dotenv').config()
 
 const port = process.env.PORT || 3000
 
-console.log("in server.js");
+app.get('/test-server', (req, res) => {
+    res.send('Connected to MongoDB');
+});
 
 // connect to the database
 mongoose.connect(process.env.MONGODB_URI)
