@@ -4,6 +4,8 @@ const mongoSanitize = require('express-mongo-sanitize')
 const cors = require('cors')
 const homeRoute = require('./Routes/homeRoute')
 const authRoute = require('./Routes/authRoute')
+const mongoose = require('mongoose')
+require('dotenv').config()
 
 // middleware
 app.use(express.urlencoded({ extended: false }))
