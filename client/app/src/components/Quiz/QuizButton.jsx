@@ -8,7 +8,6 @@ const QuizButton = ({ label, icon, currentQuestion, setCurrentQuestion, handleSu
 
 
     const handleClick = () => {
-        console.log('domanda numero ' + currentQuestion);
         let property = topic.toLowerCase()
         let value = label.toLowerCase()
         if (property.includes(' ')) {

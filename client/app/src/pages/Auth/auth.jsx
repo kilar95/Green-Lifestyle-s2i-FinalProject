@@ -15,7 +15,7 @@ const Auth = () => {
         password: '',
         confirmpass: '',
     })
-    const [confirmPass, setConfirmPass] = useState(true)
+    const [confirmPass, setConfirmPass] = useState(true);
 
     function handleChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -67,7 +67,7 @@ const Auth = () => {
                                 placeholder="Username"
                                 onChange={handleChange}
                                 value={formData.username}
-
+                                required="true"
                             />
                         </div>
 
@@ -81,6 +81,7 @@ const Auth = () => {
                                 placeholder="Password"
                                 onChange={handleChange}
                                 value={formData.password}
+                                required="true"
                             />
                             {isSignUp &&
                                 <>
@@ -92,10 +93,10 @@ const Auth = () => {
                                         placeholder="Confirm Password"
                                         onChange={handleChange}
                                         value={formData.confirmpass}
+                                        required="true"
                                     />
                                 </>
                             }
-
                         </div>
                         <span style=
                             {{
