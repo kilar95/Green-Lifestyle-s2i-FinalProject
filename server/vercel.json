@@ -25,7 +25,7 @@
       }
     },
     {
-      "src": "/home/(.*)",
+      "src": "/home",
       "dest": "/app.js",
       "methods": ["GET", "PATCH", "OPTIONS"],
       "headers": {
