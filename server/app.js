@@ -13,11 +13,11 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(mongoSanitize())
 app.use(cors(
-    {
-        origin: ["https://how-green-is-your-lifestyle.vercel.app"],
-        methods: ["POST", "GET", "PATCH", "PUT", "DELETE", "OPTIONS"],
-        credentials: true,
-    }
+    // {
+    //     origin: ["https://how-green-is-your-lifestyle.vercel.app"],
+    //     methods: ["POST", "GET", "PATCH", "PUT", "DELETE", "OPTIONS"],
+    //     credentials: true,
+    // }
 ));
 
 const port = process.env.PORT || 3000
