@@ -4,12 +4,32 @@ const mongoSanitize = require('express-mongo-sanitize')
 const cors = require('cors')
 const homeRoute = require('./Routes/homeRoute')
 const authRoute = require('./Routes/authRoute')
+const mongoose = require('mongoose')
+require('dotenv').config()
+
 
 // middleware
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(mongoSanitize())
-app.use(cors()); // Enable CORS for all routes
+app.use(cors(
+    {
+        origin: ["https://how-green-is-your-lifestyle.vercel.app"],
+        methods: ["POST", "GET"],
+        credentials: true,
+    }
+));
+
+const port = process.env.PORT || 3000
+
+// connect to the database
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+        app.listen(port, () => {
+            console.log(`Listening to port ${port}`);
+        });
+    })
+    .catch((err) => console.log(err));
 
 // setting routes
 app.use('/auth', authRoute)
@@ -34,6 +54,5 @@ app.use((err, req, res, next) => {
     })
 })
 
-app.timeout = 30000;
 
 module.exports = app

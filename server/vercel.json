@@ -5,52 +5,8 @@
   ],
   "routes": [
     {
-      "src": "/auth/register",
-      "dest": "/app.js",
-      "methods": ["POST", "OPTIONS"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
-      }
-    },
-    {
-      "src": "/auth/login",
-      "dest": "/app.js",
-      "methods": ["POST", "OPTIONS"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
-      }
-    },
-    {
-      "src": "/home/(.*)",
-      "dest": "/app.js",
-      "methods": ["GET", "PATCH", "OPTIONS"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, PATCH, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
-      }
-    },
-    {
       "src": "/(.*)",
-      "dest": "/app.js",
-      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
-      }
-    },
-    {
-      "src": "/test-connection",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/test-server",
-      "dest": "/server.js"
+      "dest": "/"
     }
   ]
 }
