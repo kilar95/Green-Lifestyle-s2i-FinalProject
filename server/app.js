@@ -15,7 +15,7 @@ app.use(mongoSanitize())
 app.use(cors(
     {
         origin: ["https://how-green-is-your-lifestyle.vercel.app"],
-        methods: ["POST", "GET"],
+        methods: ["POST", "GET", "PATCH", "PUT", "DELETE", "OPTIONS"],
         credentials: true,
     }
 ));
